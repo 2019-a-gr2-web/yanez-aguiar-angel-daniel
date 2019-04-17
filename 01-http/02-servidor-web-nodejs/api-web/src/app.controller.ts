@@ -1,10 +1,7 @@
-import {Controller, Get, HttpCode, Post, Put, Delete, Headers} from '@nestjs/common';
+import {Controller, Get, HttpCode, Post, Put, Delete, Headers, Query, Param, Body,Request, Response} from '@nestjs/common';
 import {AppService} from './app.service';
 
-// http://192.168.1.10:3000/segmentoInicial/segmentoAccion
-// http://192.168.1.10:3000/mascotas/crear
-// http://192.168.1.10:3000/mascotas/borrar
-// @Controller(segmentoInicial)
+
 @Controller('/api')
 export class AppController {
     constructor(private readonly appService: AppService) {
@@ -35,22 +32,64 @@ export class AppController {
 
     @Get('/adivina')  // METODO HTTP
     adivina(@Headers() headers): string {
-        console.log('Headers: ', headers);
+        console.log('Headers:',headers);
         const numeroRandomico =  Math.round(Math.random()*10);
         const numeroDeCabecera = Number(headers.numero);
-
         if( numeroDeCabecera == numeroRandomico){
             return 'Ok';
         }else{
             return ':(';
         }
-
-
     }
 
+    //?llave=valor
+    @Get('/consultar')
+    consultar(@Query() queryParams){
+        console.log(queryParams);
+        if(queryParams.nombre){
+            return `Hola ${queryParams.nombre}`
+        }else{
+            return 'Hola extraño'
+        }
+    }
 
+    @Get('/ciudad/:idCiudad')
+    ciudad(@Param() parametrosRuta){
+        switch (parametrosRuta.idCiudad.toLowerCase()) {
+            case 'quito':
+                return 'Que fueff';
+            case  'guayaquil':
+                return 'que maah ñañoshh';
+            default:
+                return 'Buenas tardes'
+        }
+    }
+
+    @Post('/registroComida')
+    registroComida(@Body() parametrosCuerpo,@Response() response){
+        if(parametrosCuerpo.nombre && parametrosCuerpo.cantidad){
+            const cantidad = Number(parametrosCuerpo.cantidad);
+            if(cantidad>1){
+                response.set('Premio','Fanesca');
+            }
+            return response.send({mensaje:'registro creado'});
+
+        }else{
+            return response.status(400).send({mensaje:'Error, no envia nombre o cantidad',error:400});
+        }
+    }
     // js -> ts
 
+    @Get('/semilla')
+    semilla(@Request() request){
+        console.log(request.cookies);
+        const cookies = request.cookies;
+        if(cookies.miCookie){
+            return 'ok';
+        }else{
+            return ':(';
+        }
+    }
 
 
 
@@ -100,7 +139,7 @@ class usuario{
 }
 */
 
-const json = [
+/*const json = [
     {
         llave: 'valor',
         "key": "value",
@@ -142,4 +181,4 @@ objeto.propiedadDos  // valor2
 objeto.propiedadTres = 'valor3';
 objeto['propiedadTres'] = 'valor 3';
 delete objeto.propiedadTres; // -> destruir
-objeto.propiedadTres = undefined; // -> destruir
+objeto.propiedadTres = undefined; // -> destruir*/
