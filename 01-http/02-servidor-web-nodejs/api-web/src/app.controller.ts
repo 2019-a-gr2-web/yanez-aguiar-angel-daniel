@@ -1,10 +1,7 @@
 import {Controller, Get, HttpCode, Post, Put, Delete, Headers} from '@nestjs/common';
 import {AppService} from './app.service';
 
-// http://192.168.1.10:3000/segmentoInicial/segmentoAccion
-// http://192.168.1.10:3000/mascotas/crear
-// http://192.168.1.10:3000/mascotas/borrar
-// @Controller(segmentoInicial)
+
 @Controller('/api')
 export class AppController {
     constructor(private readonly appService: AppService) {
@@ -35,17 +32,14 @@ export class AppController {
 
     @Get('/adivina')  // METODO HTTP
     adivina(@Headers() headers): string {
-        console.log('Headers: ', headers);
+        console.log('Headers:',headers);
         const numeroRandomico =  Math.round(Math.random()*10);
         const numeroDeCabecera = Number(headers.numero);
-
         if( numeroDeCabecera == numeroRandomico){
             return 'Ok';
         }else{
             return ':(';
         }
-
-
     }
 
 
@@ -100,7 +94,7 @@ class usuario{
 }
 */
 
-const json = [
+/*const json = [
     {
         llave: 'valor',
         "key": "value",
@@ -142,4 +136,4 @@ objeto.propiedadDos  // valor2
 objeto.propiedadTres = 'valor3';
 objeto['propiedadTres'] = 'valor 3';
 delete objeto.propiedadTres; // -> destruir
-objeto.propiedadTres = undefined; // -> destruir
+objeto.propiedadTres = undefined; // -> destruir*/
