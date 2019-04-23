@@ -1,6 +1,7 @@
 import {Controller, Get, HttpCode, Post, Put, Delete, Headers, Query, Param, Body,Request, Response} from '@nestjs/common';
 import {AppService} from './app.service';
 import {response} from "express";
+import * as Joi from '@hapi/joi';
 
 
 @Controller('/api')
@@ -82,54 +83,43 @@ export class AppController {
     // js -> ts
 
     @Get('/semilla')
-    semilla(@Request() request){
+    semilla(@Request() request,@Response() response){
         console.log(request.cookies);
-        const cookies = request.cookies;
-        if(cookies.miCookie){
-            return 'ok';
+        const cookies = request.cookies; //json
+        const esquemaValidacionNumero = Joi.object().keys({
+            numero:Joi.number().integer().required()
+        });
+        const objetoValidacion = {
+            numero:cookies.numero
+        };
+        const resultado = Joi.validate(objetoValidacion,esquemaValidacionNumero);
+        if(resultado.error){
+            console.log('Resultado',resultado);
         }else{
-            return ':(';
+            console.log('Numero Valido');
         }
-    }
-
-    //Deber: realizar una calculadora mediante el protocolo HTTP
-    @Get('/suma')
-    @HttpCode(200)
-    suma(@Headers() headers): number {
-        console.log('Headers:',headers);
-        const numero1 = Number(headers.numero1);
-        const numero2 = Number(headers.numero2);
-        return numero1 + numero2;
-    }
-
-    @Post('/resta')
-    @HttpCode(201)
-    resta(@Body() parametrosCuerpo,@Response() response){
-        if(parametrosCuerpo.numero1 && parametrosCuerpo.numero2){
-            const numero1 = Number(parametrosCuerpo.numero1);
-            const numero2 = Number(parametrosCuerpo.numero2);
-            const resultado = numero1 - numero2;
-            response.set('resultado',`${resultado}`);
-            return response.send({resultado:resultado});
+        const cookieSegura = request.signedCookies.fechaServidor;
+        if(cookieSegura){
+            console.log('cookie Segura');
+        }else{
+            console.log('No es valida esta cookie');
         }
-    }
-
-    @Put('/multiplicacion')
-    @HttpCode(202)
-    multiplicacion(@Query() queryParams){
-        console.log(queryParams);
-        const numero1 = Number(queryParams.numero1);
-        const numero2 = Number(queryParams.numero2);
-        return numero1 * numero2;
-    }
-
-    @Delete('/division')
-    @HttpCode(203)
-    division(@Query() queryParams){
-        console.log(queryParams);
-        const numero1 = Number(queryParams.numero1);
-        const numero2 = Number(queryParams.numero2);
-        return numero1 / numero2;
+        if(cookies.miCookie){
+            const horaFechaServidor = new Date();
+            const minutos=horaFechaServidor.getMinutes();
+            horaFechaServidor.setMinutes(minutos+1);
+            response.cookie(
+                'fechaServidor', //nombre
+                new Date().getTime(), //valor
+                { //opciones
+                    //expires: horaFechaServidor
+                    signed:true
+                }
+            );
+            return response.send('ok');
+        }else{
+            return response.send(':(');
+        }
     }
 
 }
