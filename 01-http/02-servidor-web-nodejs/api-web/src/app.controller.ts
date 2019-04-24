@@ -143,6 +143,13 @@ export class AppController {
             response.send({nombre:cookies.nombre, resultado:result});
         }
     }
+
+    @Get('/inicio')
+    inicio(
+        @Response() res
+    ){
+        return res.render('inicio');
+    }
 }
 
     /*
@@ -229,3 +236,135 @@ objeto.propiedadTres = 'valor3';
 objeto['propiedadTres'] = 'valor 3';
 delete objeto.propiedadTres; // -> destruir
 objeto.propiedadTres = undefined; // -> destruir*/
+
+//variables ? const, var, let
+//string, number, boolean
+
+function holaMundo() {
+    console.log('hola mundo');
+}
+const respuestaHolaMundo = holaMundo();
+console.log('resp hola mundo',respuestaHolaMundo);
+function suma(a,b) {
+    return a + b;
+}
+const respuestaSuma = suma(1,2);//3
+console.log('resp suma:',respuestaSuma);
+
+//condicionales
+//truty->true
+//falsy->false
+if(true){//truty
+    console.log('verdadero');
+}else{
+    console.log('false');
+}
+
+if(false){//falsy
+    console.log('verdadero');
+}else{
+    console.log('false');
+}
+
+if(""){//falsy
+    console.log('verdadero ""');
+}else{
+    console.log('false ""');
+}
+
+if("a"){//truty
+    console.log('verdadero "a"');
+}else{
+    console.log('false "a"');
+}
+
+if(0){//falsy
+    console.log('verdadero 0');
+}else{
+    console.log('false 0');
+}
+
+if(-1){//truty
+    console.log('verdadero -1');
+}else{
+    console.log('false -1');
+}
+
+if(1){//truty
+    console.log('verdadero 1');
+}else{
+    console.log('false 1');
+}
+
+if(undefined){//falsy
+    console.log('verdadero "undefined"');
+}else{
+    console.log('false undefined');
+}
+
+if(null){//falsy
+    console.log('verdadero null');
+}else{
+    console.log('false null');
+}
+
+if({}){//truty
+    console.log('verdadero null');
+}else{
+    console.log('false null');
+}
+
+//operadores de arreglos en JS
+const arreglo = [1,'a',true,null,{},[]];
+
+const arregloNumeros = [1,2,3,4,5,6];
+//1)impriman en consola todos los elementos
+const arregloNumerosForEach = [1,2,3,4,5,6];
+const rForEach = arregloNumerosForEach.forEach(function (valorActual,indice,arreglo) {
+    console.log(`Valor:${valorActual}`);
+    //console.log(`indice:${indice}`);
+    //console.log(`arreglo:${arreglo}`);
+});
+console.log(`Respuesta forEach: ${rForEach}`);
+const rForEach2 = arregloNumerosForEach.forEach(n => console.log(`Valor:${n}`));
+//2)sumen 2 a los pares y 1 a los impares
+const arregloNumerosMap = [1,2,3,4,5,6];
+const rMap = arregloNumerosMap.map(//devolver el nuevo valor de ese elemento
+    (valorActual)=>{
+        const esPar = valorActual % 2 == 0;
+        if(esPar){
+            const nuevoValor = valorActual + 2;
+            return nuevoValor;
+        }else{
+            const nuevoValor = valorActual + 1;
+            return nuevoValor;
+        }
+    });
+console.log(`respuesta map: ${rMap}`);
+
+//3) encuentre si hay un numero 4
+
+const arregloNumerosFind = [1,2,3,4,5,6];
+const rFind = arregloNumerosFind.find(
+    (valorActual)=>{
+        return valorActual == 4;
+    }
+);
+console.log(`Respuesta Find: ${rFind}`);
+//4)filtren los numeros menores a 5
+
+const arregloNumerosFilter = [1,2,3,4,5,6];
+const rFilter = arregloNumerosFilter.filter(//agregar al arreglo true; se omite del arreglo false
+    (valorActual)=>{
+        return valorActual<5;
+    }
+);
+console.log(`Respuesta Filter: ${rFilter}`);
+//5)todos los valores positivos
+//6)algun valor es menor que 2
+//7)sumen todos los valores
+//8)resten todos los valores de 100
+
+//1.1)sumen 10 a todos
+//1.2)filtren a los mayores a 15
+//1.3)si hay algun numero mayor a 30
