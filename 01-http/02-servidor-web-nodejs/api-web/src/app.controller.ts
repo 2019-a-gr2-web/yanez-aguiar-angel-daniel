@@ -122,6 +122,27 @@ export class AppController {
         }
     }
 
+    @Get('/nombre')
+    nombre(@Headers() headers, @Request() request, @Response() response){
+        const cookies = request.cookies; //json
+        const esquemaValidacionNumero = Joi.object().keys({
+            nombre:Joi.string().required()
+        });
+        const objetoValidacion = {
+            nombre:cookies.nombre
+        };
+        const resultado = Joi.validate(objetoValidacion,esquemaValidacionNumero);
+        if(resultado.error){
+            console.log('Resultado',resultado);
+        }else{
+            console.log('Nombre Valido');
+            console.log('Headers:',headers);
+            const numero1 = Number(headers.numero1);
+            const numero2 = Number(headers.numero2);
+            const result = numero1 + numero2;
+            response.send({nombre:cookies.nombre, resultado:result});
+        }
+    }
 }
 
     /*
