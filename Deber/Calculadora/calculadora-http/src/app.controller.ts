@@ -1,6 +1,7 @@
-import { Controller, Get, Delete, Put, Post, HttpCode, Headers, Body, Response, Request, Query} from '@nestjs/common';
+import { Controller, Get, Delete, Put, Post, HttpCode, Headers, Body, Response, Request, Query, Param} from '@nestjs/common';
 import { AppService } from './app.service';
 import * as Joi from '@hapi/joi';
+import {isNumber} from "util";
 
 @Controller('/calculadora')
 export class AppController {
@@ -52,7 +53,7 @@ export class AppController {
 
 
 
-  //Deber2: Crear una ruta HTTP con el metodo que ustedes queiran y el nombre que ustedes deseen
+  //Deber2 parte 1: Crear una ruta HTTP con el metodo que ustedes queiran y el nombre que ustedes deseen
 
   @Get('/cookieSuma')
   @HttpCode(200)
@@ -76,6 +77,8 @@ export class AppController {
       response.send({nombre:cookies.nombre, resultado:result});
     }
   }
+  
+  
 
   @Post('/cookieResta')
   @HttpCode(201)
@@ -144,5 +147,141 @@ export class AppController {
       const result = numero1 / numero2;
       response.send({nombre:cookies.nombre, resultado:result});
     }
+  }
+
+  @Get('/ciudad/:idCiudad')
+  ciudad(@Param() parametrosRuta){
+    switch (parametrosRuta.idCiudad.toLowerCase()) {
+      case 'quito':
+        return 'Que fueff';
+      case  'guayaquil':
+        return 'que maah ñañoshh';
+      default:
+        return 'Buenas tardes'
+    }
+  }
+
+
+//Deber 2 parte 2: Al usar cualquier operacion por primera vez , suma, resta,
+// multiplicacion o division el sistema va a guardar una cookie segura con el valor de 100.
+// Al ejecutar cualquier operacion de su calculadora, el resultado de la operacion se va a
+// restar del total de la cookie segura.
+// Al llegar a cero van a agregar al objeto json
+// {
+// nombreUsuario:'Adrian',
+// resultado: 2,
+// mensaje: 'Se le terminaron sus puntos'
+// }
+
+  @Get('/calcu')
+  calcu(@Headers() headers, @Request() request, @Response() response){
+    const numero1 = Number(headers.numero1);
+    const numero2 = Number(headers.numero2);
+    const nombre = headers.nombre;
+    const operacion = headers.operacion;
+    const cookies = request.cookies;
+    var result;
+    if(operacion=='suma'){
+      result = suma(numero1,numero2);
+    };
+    if(operacion=='resta'){
+      result = resta(numero1,numero2);
+    };
+    if(operacion=='multiplicacion'){
+      result = multiplicacion(numero1,numero2);
+    };
+    if(operacion=='division'){
+      result = division(numero1,numero2);
+    };
+    const esquemaValidacionResultado = Joi.object().keys({result:Joi.number().required()});
+    const objetoValidacionResultado = {result:result};
+    const resultado = Joi.validate(objetoValidacionResultado,esquemaValidacionResultado);
+    if(resultado.error){
+      console.log('Resultado',resultado);
+    }else{
+      var valor = request.signedCookies.segura;
+      if(valor){
+        valor = valor - result;
+        if(valor==0){
+          response.send({nombreUsuario:nombre, resultado:result, mensaje:'se le terminaron sus puntos'});
+          console.log('valor en cookie:',valor);
+        }else{
+          response.cookie('segura',valor,{signed:true});
+          response.send({nombreUsuario:nombre, resultado:result});
+          console.log('valor actual en cookie:',valor);
+        }
+      }else{
+        response.cookie('segura','100',{signed:true});
+        response.send({nombreUsuario:nombre, resultado:result});
+        console.log('valor inicial en cookie:',100);
+      }
+    }
+  }
+
+
+}
+
+
+function suma(a,b) {
+  const esquemaValidacionNumero1 = Joi.object().keys({numero1:Joi.number().required()});
+  const objetoValidacion1 = {numero1:a};
+  const resultado1 = Joi.validate(objetoValidacion1,esquemaValidacionNumero1);
+  const esquemaValidacionNumero2 = Joi.object().keys({numero2:Joi.number().required()});
+  const objetoValidacion2 = {numero2:b};
+  const resultado2 = Joi.validate(objetoValidacion2,esquemaValidacionNumero2);
+  if(resultado1.error){
+    return `Resultadoresultado: ${resultado1}`;
+  }else if(resultado2.error){
+    return `Resultadoresultado: ${resultado2}`;
+  }else{
+    return a + b;
+  }
+}
+
+function resta(a,b) {
+  const esquemaValidacionNumero1 = Joi.object().keys({numero1:Joi.number().required()});
+  const objetoValidacion1 = {numero1:a};
+  const resultado1 = Joi.validate(objetoValidacion1,esquemaValidacionNumero1);
+  const esquemaValidacionNumero2 = Joi.object().keys({numero2:Joi.number().required()});
+  const objetoValidacion2 = {numero2:b};
+  const resultado2 = Joi.validate(objetoValidacion2,esquemaValidacionNumero2);
+  if(resultado1.error){
+    return `Resultadoresultado: ${resultado1}`;
+  }else if(resultado2.error){
+    return `Resultadoresultado: ${resultado2}`;
+  }else{
+    return a - b;
+  }
+}
+
+function multiplicacion(a,b) {
+  const esquemaValidacionNumero1 = Joi.object().keys({numero1:Joi.number().required()});
+  const objetoValidacion1 = {numero1:a};
+  const resultado1 = Joi.validate(objetoValidacion1,esquemaValidacionNumero1);
+  const esquemaValidacionNumero2 = Joi.object().keys({numero2:Joi.number().required()});
+  const objetoValidacion2 = {numero2:b};
+  const resultado2 = Joi.validate(objetoValidacion2,esquemaValidacionNumero2);
+  if(resultado1.error){
+    return `Resultadoresultado: ${resultado1}`;
+  }else if(resultado2.error){
+    return `Resultadoresultado: ${resultado2}`;
+  }else{
+    return a * b;
+  }
+}
+
+function division(a,b) {
+  const esquemaValidacionNumero1 = Joi.object().keys({numero1:Joi.number().required()});
+  const objetoValidacion1 = {numero1:a};
+  const resultado1 = Joi.validate(objetoValidacion1,esquemaValidacionNumero1);
+  const esquemaValidacionNumero2 = Joi.object().keys({numero2:Joi.number().positive().required()});
+  const objetoValidacion2 = {numero2:b};
+  const resultado2 = Joi.validate(objetoValidacion2,esquemaValidacionNumero2);
+  if(resultado1.error){
+    return `Resultadoresultado: ${resultado1}`;
+  }else if(resultado2.error){
+    return `Resultadoresultado: ${resultado2}`;
+  }else{
+    return a / b;
   }
 }

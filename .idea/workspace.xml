@@ -15,30 +15,36 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FavoritesManager">
+    <favorites_list name="yanez-aguiar-angel-daniel" />
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/src/app.controller.ts">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Deber/Calculadora/calculadora-http/src/app.controller.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1700">
-              <caret line="237" column="44" selection-start-line="237" selection-start-column="44" selection-end-line="237" selection-end-column="44" />
+            <state relative-caret-position="265">
+              <caret line="177" column="44" lean-forward="true" selection-start-line="177" selection-start-column="44" selection-end-line="177" selection-end-column="44" />
               <folding>
-                <element signature="e#0#123#0" expanded="true" />
+                <element signature="e#0#118#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/src/main.ts">
+        <entry file="file://$PROJECT_DIR$/Deber/Calculadora/calculadora-http/src/main.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="13" column="1" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
+            <state relative-caret-position="136">
+              <caret line="8" column="1" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
+              <folding>
+                <element signature="e#0#43#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/views/inicio.ejs">
           <provider selected="true" editor-type-id="text-editor">
             <state>
@@ -67,11 +73,11 @@
         <option value="$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/.gitignore" />
         <option value="$PROJECT_DIR$/Deber/Calculadora/src/app.controller.ts" />
         <option value="$PROJECT_DIR$/Deber/Calculadora/calculadora-http/src/main.ts" />
-        <option value="$PROJECT_DIR$/Deber/Calculadora/calculadora-http/src/app.controller.ts" />
         <option value="$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/src/main.ts" />
         <option value="$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/view/inicio.ejs" />
         <option value="$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/src/app.controller.ts" />
         <option value="$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/views/inicio.ejs" />
+        <option value="$PROJECT_DIR$/Deber/Calculadora/calculadora-http/src/app.controller.ts" />
       </list>
     </option>
   </component>
@@ -104,21 +110,6 @@
               <item name="yanez-aguiar-angel-daniel" type="462c0819:PsiDirectoryNode" />
               <item name="01-http" type="462c0819:PsiDirectoryNode" />
               <item name="02-servidor-web-nodejs" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="yanez-aguiar-angel-daniel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="yanez-aguiar-angel-daniel" type="462c0819:PsiDirectoryNode" />
-              <item name="01-http" type="462c0819:PsiDirectoryNode" />
-              <item name="02-servidor-web-nodejs" type="462c0819:PsiDirectoryNode" />
-              <item name="api-web" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="yanez-aguiar-angel-daniel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="yanez-aguiar-angel-daniel" type="462c0819:PsiDirectoryNode" />
-              <item name="01-http" type="462c0819:PsiDirectoryNode" />
-              <item name="02-servidor-web-nodejs" type="462c0819:PsiDirectoryNode" />
-              <item name="api-web" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="yanez-aguiar-angel-daniel" type="b2602c69:ProjectViewProjectNode" />
@@ -216,7 +207,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="42143000" />
+    <option name="totallyTimeSpent" value="55306000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -229,11 +220,10 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17514871" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49906892" visible="true" weight="0.17514871" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info id="Favorites" order="2" sideWeight="0.5009311" side_tool="true" weight="0.17514871" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32921812" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49953833" weight="0.32824427" />
@@ -296,16 +286,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Deber/Calculadora/calculadora-http/src/main.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="8" column="1" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/node_modules/express/lib/application.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -316,12 +296,19 @@
     <entry file="file://$PROJECT_DIR$/01-http/01-servidor-web-estatico/imagenes/Jellyfish.jpg">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/Deber/Calculadora/calculadora-http/src/app.controller.ts">
+    <entry file="file://$PROJECT_DIR$/Deber/Calculadora/calculadora-http/node_modules/@hapi/joi/lib/errors.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="65" column="6" selection-start-line="65" selection-start-column="6" selection-end-line="65" selection-end-column="6" />
+        <state relative-caret-position="169">
+          <caret line="201" column="18" selection-start-line="201" selection-start-column="18" selection-end-line="201" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/src/app.controller.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-330">
+          <caret line="58" column="36" lean-forward="true" selection-start-line="58" selection-start-column="36" selection-end-line="58" selection-end-column="36" />
           <folding>
-            <element signature="e#0#118#0" expanded="true" />
+            <element signature="e#0#123#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -333,12 +320,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/01-http/02-servidor-web-nodejs/api-web/src/app.controller.ts">
+    <entry file="file://$PROJECT_DIR$/Deber/Calculadora/calculadora-http/src/main.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1700">
-          <caret line="237" column="44" selection-start-line="237" selection-start-column="44" selection-end-line="237" selection-end-column="44" />
+        <state relative-caret-position="136">
+          <caret line="8" column="1" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
           <folding>
-            <element signature="e#0#123#0" expanded="true" />
+            <element signature="e#0#43#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -347,6 +334,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="5" selection-start-column="5" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Deber/Calculadora/calculadora-http/src/app.controller.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="265">
+          <caret line="177" column="44" lean-forward="true" selection-start-line="177" selection-start-column="44" selection-end-line="177" selection-end-column="44" />
+          <folding>
+            <element signature="e#0#118#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
