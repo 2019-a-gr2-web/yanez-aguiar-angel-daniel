@@ -360,11 +360,66 @@ const rFilter = arregloNumerosFilter.filter(//agregar al arreglo true; se omite 
     }
 );
 console.log(`Respuesta Filter: ${rFilter}`);
-//5)todos los valores positivos
+
+//5)todos los valores positivos TRUE FALSE
+const arregloNumerosEvery = [1,2,3,4,5,6];
+const respuestaEvery = arregloNumerosEvery.every(//si todos cumplen TRUE
+                            //si alguno no cumple FALSE
+    (valorActual)=>{
+        return valorActual>0
+    }
+);
+console.log(respuestaEvery);//TRUE
+
 //6)algun valor es menor que 2
+const arregloNumerosSome = [1,2,3,4,5,6];
+const respuestaSome = arregloNumerosSome.some(
+    (valorActual)=>{
+        return valorActual>2
+    }
+);
+console.log(respuestaSome);
+
 //7)sumen todos los valores
+const arregloNumerosReduce = [1,2,3,4,5,6];
+const valorDondeEmpiezaElCalculo = 0;
+//<4
+//10&+5
+//>=4
+//15%+3
+const respuestaReduce = arregloNumerosReduce.reduce(
+    (acumulado, valorActual)=>{
+        if(valorActual<4){
+            return acumulado + valorActual*1.1 + 5;
+        }else{
+            return acumulado + valorActual*1.15 + 3;
+        }
+    },
+    valorDondeEmpiezaElCalculo
+);
+console.log(respuestaReduce);
+
+
 //8)resten todos los valores de 100
+const arregloNumerosReduce2 = [1,2,3,4,5,6];
+const valorDondeEmpiezaElCalculo2 = 100;
+const respuestaReduce2 = arregloNumerosReduce.reduce(
+    (acumulado, valorActual)=>{
+            return acumulado - valorActual;
+    },
+    valorDondeEmpiezaElCalculo2
+);
+console.log(respuestaReduce2);
 
 //1.1)sumen 10 a todos
 //1.2)filtren a los mayores a 15
 //1.3)si hay algun numero mayor a 30
+const arregloEjercicio = [1,2,3,4,5,6];
+const respuestaEjercicio = arregloEjercicio.map((valorActual)=>{
+    return valorActual + 10;
+}).filter((valorActual)=>{
+    return valorActual > 15;
+}).some((valorActual)=>{
+    return valorActual >30;
+});
+console.log(respuestaEjercicio);
