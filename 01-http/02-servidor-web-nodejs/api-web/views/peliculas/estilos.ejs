@@ -16,19 +16,72 @@
             color:red;
             background-color:yellow;
         }
-
+        /* selector -> varias etiquetas */
         p, div, h2 {
             color:green;
             background-color:orange;
+            font-size: 24px;
+            font-weight: 700;
         }
+        /* selector -> id */
+        #adios {
+            color:pink;
+            background-color:purple;
+        }
+
+        /* selector -> clase */
+        .verde {
+            color:brown;
+            background-color:blue;
+        }
+        /* importancia del selector -> id > clase.etiqueta > clase > etiqueta */
+
+        p {
+            color:orange;
+            background-color:green;
+        }
+        /* clase > clase > clase (la ultima se aplica) */
+        .azul {
+            color:deepskyblue;
+        }
+
+        .morado {
+            color:orange;
+        }
+
+        .verde {
+            color:greenyellow;
+        }
+
+        p.verde{
+            color: orange;
+        }
+
+        p.verde.azul{
+            color: black;
+        }
+
     </style>
 </head>
 <body>
     <h1>Hola</h1>
-    <h1 id="adios">Adios</h1>
+    <h1 id="adios" class="verde" style="color:white;background-color:black;">Adios</h1>
     <h1 class="verde">Bienvenidos</h1>
     <p>Barcelona</p>
     <div>Liga</div>
     <h2>Emelec</h2>
+
+    <p class="morado azul">hola mundo</p>
+    <div class="verde">verde1</div>
+    <p class="verde">verde2</p>
+
+    <p class="verde azul">verde2</p>
+
+    <style>
+        p {
+            color:orange;
+            background-color:green;
+        }
+    </style>
 </body>
 </html>
