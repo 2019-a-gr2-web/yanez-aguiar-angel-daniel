@@ -144,7 +144,7 @@ export class AppController {
         }
     }
 
-    @Get('/inicio')
+    @Get('/inicio')//endpoint
     inicio(
         @Response() res
     ){
@@ -158,6 +158,15 @@ export class AppController {
         @Response() res
     ){
         return res.render('peliculas/inicio', {
+
+        });
+    }
+
+    @Get('/estilos')
+    estilos(
+        @Response() res
+    ){
+        return res.render('peliculas/estilos', {
 
         });
     }
