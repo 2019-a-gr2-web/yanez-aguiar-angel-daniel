@@ -6,6 +6,11 @@ import * as Joi from '@hapi/joi';
 
 @Controller('/api')
 export class AppController {
+
+    arregloUsusarios = [];
+
+
+
     constructor(private readonly appService: AppService) {
     }
 
@@ -170,6 +175,8 @@ export class AppController {
 
         });
     }
+
+
 
 }
 
