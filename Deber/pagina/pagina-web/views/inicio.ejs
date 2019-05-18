@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mi pagina</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <style>
+        .container{
+            background: black;
+        }
+        .btn-black{
+            color: cyan;
+        }
+        h1, h2, p{
+            color: white;
+            text-align: center;
+        }
+        #recientes{
+            text-align: left;
+        }
+        .separador{
+            margin-top: 24px;
+            margin-bottom: 16px;
+        }
+        .peli{
+            width: 194px;
+            height: 259px;
+            border-color: orange;
+            border-style: solid;
+            border-width: 2px;
+        }
+        .col-sm-3.imagen{
+            text-align: center;
+            padding-bottom: 15px;
+            padding-top: 15px;
+        }
+        .form-control{
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-1">
+            </div>
+            <div class="col-sm-4">
+                <a href="">
+                    <img src="https://www.pelisplanet.com/wp-content/uploads/2019/01/logo-amorrr.png">
+                </a>
+            </div>
+            <div class="col-sm-1">
+            </div>
+            <div class="col-sm-3">
+                <input type="text" class="form-control" id="buscar" aria-describedby="emailHelp" placeholder="Buscar pelicula,actor,etc">
+            </div>
+            <div class="col-sm-3">
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <button type="button" class="btn btn-black">Generos</button>
+                    <button type="button" class="btn btn-black">Estrenos</button>
+                    <button type="button" class="btn btn-black">Tutorial</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h2>Ver Online y descargar películas en alta definición</h2>
+                <p>Vive la experiencia del cine en tu hogar, con películas en Hd 1080p para ver online y descargar en idioma latino y castellano...</p>
+                <div class="row">
+                    <div class="col-sm-3">
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                todas las categorias
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="#">accion</a>
+                                <a class="dropdown-item" href="#">comedia</a>
+                                <a class="dropdown-item" href="#">drama</a>
+                            </div>
+                            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                año
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <a class="dropdown-item" href="#">2017</a>
+                                <a class="dropdown-item" href="#">2018</a>
+                                <a class="dropdown-item" href="#">2019</a>
+                            </div>
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                idioma
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                <button class="dropdown-item" type="button">castellano</button>
+                                <button class="dropdown-item" type="button">latino</button>
+                                <button class="dropdown-item" type="button">subtitulado</button>
+                            </div>
+                            <button type="button" class="btn btn-success">Buscar</button>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                    </div>
+                </div>
+                <p>peliculas mas populares</p>
+                <div class="row">
+                    <div class="col-sm-3 imagen">
+                        <a href="">
+                            <img class="peli" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmonvFJ5XZDywfNsXcjrpnG0cpiORuea7TIUpx_XqrwFNJKN51">
+                        </a>
+                    </div>
+                    <div class="col-sm-3 imagen">
+                        <a href="">
+                            <img class="peli" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6PS-gwV7iIGnHDeexjgUdIbx-XKxJ4YTTl-PM6AfQ0Hw1NbuW">
+                        </a>
+                    </div>
+                    <div class="col-sm-3 imagen">
+                        <a href="">
+                            <img class="peli" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTecA1tNJaLOFWbiRAeF4XAlAoVpo2UPaadxDbH-Gjyv65JQfZB">
+                        </a>
+                    </div>
+                    <div class="col-sm-3 imagen">
+                        <a href="">
+                            <img class="peli" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzcEmy_EOGyF1lvt7S3KwIyTUk3E_lGY7OuWdfzo8sdoicvgvgVg">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <p id="recientes">peliculas mas recientes</p>
+                <div class="row">
+                    <div class="col-sm-3 imagen">
+                        <a href="">
+                            <img class="peli" src="https://www.pelisplanet.com/wp-content/uploads/2019/05/Decisión-extrema-An-Acceptable-Loss.jpg">
+                        </a>
+                    </div>
+                    <div class="col-sm-3 imagen">
+                        <a href="">
+                            <img class="peli" src="https://www.pelisplanet.com/wp-content/uploads/2016/02/los-condenados-2.jpg">
+                        </a>
+                    </div>
+                    <div class="col-sm-3 imagen">
+                        <a href="">
+                            <img class="peli" src="https://www.pelisplanet.com/wp-content/uploads/2019/05/Dragon-Ball-Super-Broly.jpg">
+                        </a>
+                    </div>
+                    <div class="col-sm-3 imagen">
+                        <a href="">
+                            <img class="peli" src="https://www.pelisplanet.com/wp-content/uploads/2016/02/monstruoso.jpg">
+                        </a>
+                    </div>
+                </div>
+                <div class="separador"></div>
+                <div class="row">
+                    <div class="col-sm-3 imagen">
+                        <a href="">
+                            <img class="peli" src="https://www.pelisplanet.com/wp-content/uploads/2016/02/Monsters-2.jpg">
+                        </a>
+                    </div>
+                    <div class="col-sm-3 imagen">
+                        <a href="">
+                            <img class="peli" src="https://www.pelisplanet.com/wp-content/uploads/2016/02/madagascar-3.jpg">
+                        </a>
+                    </div>
+                    <div class="col-sm-3 imagen">
+                        <a href="">
+                            <img class="peli" src="https://www.pelisplanet.com/wp-content/uploads/2017/11/rio.jpg">
+                        </a>
+                    </div>
+                    <div class="col-sm-3 imagen">
+                        <a href="">
+                            <img class="peli" src="https://www.pelisplanet.com/wp-content/uploads/2016/02/sangre-sudor-y-gloria.jpg">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
