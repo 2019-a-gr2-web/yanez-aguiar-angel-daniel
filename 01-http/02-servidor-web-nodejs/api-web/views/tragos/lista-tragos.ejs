@@ -26,10 +26,10 @@
             <td><%=trago.tipo%></td>
             <td>
                 <button>editar</button>
-                <a href="/api/traguito/eliminar">
+                <form action="/api/traguito/eliminar" method="post">
+                    <input type="hidden" name="id" value="<%=trago.id%>"/>
                     <button>eliminar</button>
-                </a>
-
+                </form>
             </td>
         </tr>
     <%})%>
