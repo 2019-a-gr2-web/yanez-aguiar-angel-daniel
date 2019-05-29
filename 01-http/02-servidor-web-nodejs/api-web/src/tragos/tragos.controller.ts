@@ -56,7 +56,7 @@ export class TragosController {
                    // @Body('fechaCaducidad') fechaCaducidad:Date,
                    // @Body('precio') precio:number,
     ){
-
+        this._tragosService.eliminarPorId(id);
         res.redirect('/api/traguito/lista')
 
 
