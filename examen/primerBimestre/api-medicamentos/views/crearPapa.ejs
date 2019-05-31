@@ -11,21 +11,38 @@
 <body>
 <div class="container">
     <div class="row">
-        <form action="" method="post">
+        <form action="/api/examen/principal" method="post">
             <label for="nombreUsuario"></label>
             <button>Salir</button>
         </form>
     </div>
     <div class="row">
-        <form action="" method="post">
+        <form action="/api/examen/paciente" method="post">
             <div class="form-group">
                 <label for="nombres"></label>
                 <input type="text" id="nombres" name="nombres">
             </div>
             <div class="form-group">
                 <label for="apellidos"></label>
-                <input type="text" id="nombres" name="nombres">
+                <input type="text" id="apellidos" name="apellidos">
             </div>
+            <div class="form-group">
+                <label for="fechaNacimiento"></label>
+                <input type="date" id="fechaNacimiento" name="fechaNacimiento">
+            </div>
+            <div class="form-group">
+                <label for="hijos"></label>
+                <input type="number" id="hijos" name="hijos">
+            </div>
+            <div class="form-group">
+                <label for="tieneSeguro"></label>
+                <select name="tieneSeguro" id="tieneSeguro">
+                    <option value="true">si</option>
+                    <option value="false">no</option>
+                </select>
+            </div>
+            <a href="/api/examen/paciente"><button>Cerrar</button></a>
+            <button>Crear</button>
         </form>
 </div>
 </div>

@@ -20,6 +20,11 @@ export class AppController {
     res.render('gestionarPapas')
   }
 
+  @Get('medicamento')
+  medicamento(@Res() res){
+    res.render('gestionarHijos')
+  }
+
   @Get('crearPaciente')
   crearPaciente(@Res() res){
     res.render('crearPapa')
