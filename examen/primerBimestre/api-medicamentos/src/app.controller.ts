@@ -93,7 +93,7 @@ export class AppController {
     const cookieSegura = req.signedCookies.usuario;
     if(cookieSegura){
       console.log(cookieSegura);
-      res.render('crearPapa')
+      res.render('crearPapa',{nombreUsuario:cookieSegura})
     }else{
       res.cookie('usuario','',{expires:new Date('Thu, 01 Jan 1970 00:00:01 GMT'),signed:false});
       res.redirect('/api/examen/login')
@@ -105,7 +105,7 @@ export class AppController {
     const cookieSegura = req.signedCookies.usuario;
     if(cookieSegura){
       console.log(cookieSegura);
-      res.render('crearHijo',{idPadre:this.appService.idPadre})
+      res.render('crearHijo',{idPadre:this.appService.idPadre,nombreUsuario:cookieSegura})
     }else{
       res.cookie('usuario','',{expires:new Date('Thu, 01 Jan 1970 00:00:01 GMT'),signed:false});
       res.redirect('/api/examen/login')
