@@ -181,6 +181,7 @@ export class AppController {
   @Post('eliminarM')
   eliminarMedicamentoPost(@Req() req, @Body() id: number, @Res() res
   ){
+    console.log(id);
     const cookieSegura = req.signedCookies.usuario;
     if(cookieSegura){
       console.log(cookieSegura);

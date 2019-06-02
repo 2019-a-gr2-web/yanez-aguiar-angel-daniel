@@ -7,57 +7,113 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Examen</title>
+    <style>
+        .col-sm-12{
+            text-align: center;
+        }
+        #salir{
+            text-align: right;
+        }
+        .col-sm-8{
+            text-align: right;
+        }
+        table, tr, td, th{
+            border: solid black 1px;
+        }
+        .separador{
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+        .col-sm-3{
+            padding-top: 25px;
+        }
+        #tabla{
+            text-align: -webkit-center;
+        }
+    </style>
 </head>
 <body>
 <div class="container">
     <div class="row">
+        <div class="col-sm-12" id="salir">
         <form action="/api/examen/login" method="post">
             <label for="nombreUsuario"><%=nombreUsuario%></label>
             <button class="btn btn-warning">Salir</button>
         </form>
+        </div>
     </div>
     <div class="row">
-        <form action="/api/examen/medicamentosBusqueda" method="post">
-            <label for="buscar"></label>
-            <input type="text" id="buscar" name="busqueda" placeholder="Busqueda">
-            <button class="btn btn-primary">Buscar</button>
-        </form>
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+            <div class="row">
+                <div class="col-sm-12">
+                <form action="/api/examen/medicamentosBusqueda" method="post">
+                    <div class="row">
+                <div class="col-sm-9">
+                    <label for="buscar"></label>
+                    <input class="form-control" type="text" id="buscar" name="busqueda" placeholder="Busqueda">
+                </div>
+                <div class="col-sm-3">
+                    <button class="btn btn-primary btn-block">Buscar</button>
+                </div>
+                    </div>
+                </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-2"></div>
     </div>
     <div class="row">
-        <a href="/api/examen/crearMedicamento">
-            <button class="btn btn-success">Crear</button>
-        </a>
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+            <div class="row">
+                <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-sm-9"></div>
+                            <div class="col-sm-3">
+                                <a href="/api/examen/crearMedicamento">
+                                    <button class="btn btn-success btn-block">Crear</button>
+                                </a>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-2"></div>
     </div>
+    <div class="separador"></div>
     <div class="row">
-        <table>
-            <tr>
-                <th>gramos a ingerir</th>
-                <th>nombre</th>
-                <th>composicion</th>
-                <th>usado para</th>
-                <th>fecha caducidad</th>
-                <th>numero pastillas</th>
-                <th>acciones</th>
-            </tr>
-            <%arregloMedicamentos.forEach((medicamento)=>{%>
-            <%if(medicamento.pacienteId==idPadre){%>
-            <tr>
-                <td><%=medicamento.gramosAIngerir%></td>
-                <td><%=medicamento.nombre%></td>
-                <td><%=medicamento.composicion%></td>
-                <td><%=medicamento.usadoPara%></td>
-                <td><%=medicamento.fechaCaducidad%></td>
-                <td><%=medicamento.numeroPastillas%></td>
-                <td>
-                    <form action="/api/examen/eliminarM" method="post">
-                        <input type="hidden" name="id" value="<%=medicamento.id%>"/>
-                        <button class="btn btn-danger">Eliminar</button>
-                    </form>
-                </td>
-            </tr>
-            <%}%>
-            <%})%>
-        </table>
+        <div class="col-sm-12" id="tabla">
+            <table>
+                <tr>
+                    <th>gramos a ingerir</th>
+                    <th>nombre</th>
+                    <th>composicion</th>
+                    <th>usado para</th>
+                    <th>fecha caducidad</th>
+                    <th>numero pastillas</th>
+                    <th>acciones</th>
+                </tr>
+                <%arregloMedicamentos.forEach((medicamento)=>{%>
+                <%if(medicamento.pacienteId==idPadre){%>
+                <tr>
+                    <td><%=medicamento.gramosAIngerir%></td>
+                    <td><%=medicamento.nombre%></td>
+                    <td><%=medicamento.composicion%></td>
+                    <td><%=medicamento.usadoPara%></td>
+                    <td><%=medicamento.fechaCaducidad%></td>
+                    <td><%=medicamento.numeroPastillas%></td>
+                    <td>
+                        <form action="/api/examen/eliminarM" method="post">
+                            <input type="hidden" name="id" value="<%=medicamento.id%>"/>
+                            <button class="btn btn-danger btn-block">Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
+                <%}%>
+                <%})%>
+            </table>
+        </div>
     </div>
 </div>
 </body>

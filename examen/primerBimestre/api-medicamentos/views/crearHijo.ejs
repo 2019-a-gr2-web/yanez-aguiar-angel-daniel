@@ -7,45 +7,64 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Examen</title>
-
+    <style>
+        .col-sm-12{
+            text-align: center;
+        }
+        #salir{
+            text-align: right;
+        }
+    </style>
 </head>
 <body>
 <div class="container">
     <div class="row">
+        <div class="col-sm-12" id="salir">
         <form action="/api/examen/login" method="post">
             <label for="nombreUsuario"><%=nombreUsuario%></label>
             <button class="btn btn-warning">Salir</button>
         </form>
+        </div>
     </div>
     <div class="row">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6">
         <form action="/api/examen/medicamentosPost" method="post">
             <div class="form-group">
                 <label for="gramosAIngerir"></label>
-                <input type="number" id="gramosAIngerir" name="gramosAIngerir" min="0" step="0.01">
+                <input class="form-control" type="number" id="gramosAIngerir" name="gramosAIngerir" placeholder="gramos a ingerir" min="0" step="0.01" required>
             </div>
             <div class="form-group">
                 <label for="nombre"></label>
-                <input type="text" id="nombre" name="nombre">
+                <input class="form-control" type="text" id="nombre" name="nombre" placeholder="nombre" required>
             </div>
             <div class="form-group">
                 <label for="composicion"></label>
-                <input type="text" id="composicion" name="composicion">
+                <input class="form-control" type="text" id="composicion" name="composicion" placeholder="composicion" required>
             </div>
             <div class="form-group">
                 <label for="usadoPara"></label>
-                <input type="text" id="usadoPara" name="usadoPara">
+                <input class="form-control" type="text" id="usadoPara" name="usadoPara" placeholder="usado para" required>
             </div>
             <div class="form-group">
-                <label for="fechaCaducidad"></label>
-                <input type="date" id="fechaCaducidad" name="fechaCaducidad">
+                <label for="fechaCaducidad">Fecha de caducidad</label>
+                <input class="form-control" type="date" id="fechaCaducidad" name="fechaCaducidad" required>
             </div>
             <div class="form-group">
                 <label for="numeroPastillas"></label>
-                <input type="number" id="numeroPastillas" name="numeroPastillas" min="0">
+                <input class="form-control" type="number" id="numeroPastillas" name="numeroPastillas" placeholder="numero de pastillas" min="0" required>
             </div>
-            <a href="/api/examen/medicamentos/<%=idPadre%>" class="btn btn-primary">Cerrar</a>
-            <button class="btn btn-success">Crear</button>
+            <div class="row">
+                <div class="col-sm-6">
+            <a href="/api/examen/medicamentos/<%=idPadre%>" class="btn btn-primary btn-block">Cerrar</a>
+                </div>
+                <div class="col-sm-6">
+            <button class="btn btn-success btn-block">Crear</button>
+                </div>
+            </div>
         </form>
+        </div>
+        <div class="col-sm-3"></div>
     </div>
 </div>
 </body>

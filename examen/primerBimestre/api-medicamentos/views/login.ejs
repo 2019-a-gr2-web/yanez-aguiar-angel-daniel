@@ -8,21 +8,33 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Examen</title>
     <style>
-        .container{
-
+        .col-sm-6{
+            text-align: center;
+            padding-top: 50px;
         }
+
     </style>
 </head>
 <body>
 <div class="container">
     <div class="row">
-        <form action="/api/examen/principal" method="post">
-            <div class="form-group">
-                <label for="nombre"></label>
-                <input type="text" id="nombre" name="nombre" placeholder="Nombre">
-            </div>
-            <button class="btn btn-success">Login</button>
-        </form>
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6">
+            <form action="/api/examen/principal" method="post">
+                <div class="form-group">
+                    <label for="nombre"></label>
+                    <input class="form-control" type="text" id="nombre" name="nombre" placeholder="Nombre">
+                </div>
+                <div class="row">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-8">
+                        <button class="btn btn-success btn-block">Login</button>
+                    </div>
+                    <div class="col-sm-2"></div>
+                </div>
+            </form>
+        </div>
+        <div class="col-sm-3"></div>
     </div>
 </div>
 </body>

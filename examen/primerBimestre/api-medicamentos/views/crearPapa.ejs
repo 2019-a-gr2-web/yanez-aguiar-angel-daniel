@@ -7,43 +7,63 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Examen</title>
+    <style>
+        .col-sm-12{
+            text-align: center;
+        }
+        #salir{
+            text-align: right;
+        }
+    </style>
 </head>
 <body>
 <div class="container">
     <div class="row">
+        <div class="col-sm-12" id="salir">
         <form action="/api/examen/login" method="post">
             <label for="nombreUsuario"><%=nombreUsuario%></label>
             <button class="btn btn-warning">Salir</button>
         </form>
+        </div>
     </div>
     <div class="row">
-        <form action="/api/examen/pacientePost" method="post">
-            <div class="form-group">
-                <label for="nombres"></label>
-                <input type="text" id="nombres" name="nombres" placeholder="nombres" required>
-            </div>
-            <div class="form-group">
-                <label for="apellidos"></label>
-                <input type="text" id="apellidos" name="apellidos" placeholder="apellidos" required>
-            </div>
-            <div class="form-group">
-                <label for="fechaNacimiento">fecha de nacimiento</label>
-                <input type="date" id="fechaNacimiento" name="fechaNacimiento" required>
-            </div>
-            <div class="form-group">
-                <label for="hijos">hijos</label>
-                <input type="number" id="hijos" name="hijos" min="0" required>
-            </div>
-            <div class="form-group">
-                <label for="tieneSeguro">tiene seguro</label>
-                <select name="tieneSeguro" id="tieneSeguro">
-                    <option value="true" selected>si</option>
-                    <option value="false">no</option>
-                </select>
-            </div>
-            <a href='/api/examen/paciente' class="btn btn-primary">Cerrar</a>
-            <button class="btn btn-success">Crear</button>
-        </form>
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6">
+            <form action="/api/examen/pacientePost" method="post">
+                <div class="form-group">
+                    <label for="nombres"></label>
+                    <input class="form-control" type="text" id="nombres" name="nombres" placeholder="nombres" required>
+                </div>
+                <div class="form-group">
+                    <label for="apellidos"></label>
+                    <input class="form-control" type="text" id="apellidos" name="apellidos" placeholder="apellidos" required>
+                </div>
+                <div class="form-group">
+                    <label for="fechaNacimiento">fecha de nacimiento</label>
+                    <input class="form-control" type="date" id="fechaNacimiento" name="fechaNacimiento" required>
+                </div>
+                <div class="form-group">
+                    <label for="hijos"></label>
+                    <input class="form-control" type="number" id="hijos" name="hijos" placeholder="hijos" min="0" required>
+                </div>
+                <div class="form-group">
+                    <label for="tieneSeguro">tiene seguro</label>
+                    <select class="form-control" name="tieneSeguro" id="tieneSeguro">
+                        <option value="true" selected>si</option>
+                        <option value="false">no</option>
+                    </select>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <a href='/api/examen/paciente' class="btn btn-primary btn-block">Cerrar</a>
+                    </div>
+                    <div class="col-sm-6">
+                        <button class="btn btn-success btn-block">Crear</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-sm-3"></div>
 </div>
 </div>
 </body>
