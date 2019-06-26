@@ -18,7 +18,8 @@ import {FiestaModule} from "./fiesta/fiesta.module";
     password: 'root',
     database: 'test',
     entities: [TragosEntity,DistribuidorEntity,FiestaEntity],
-    synchronize: true
+    synchronize: true,
+      dropSchema: false
   }),],
   controllers: [AppController],
   providers: [AppService],
