@@ -6,8 +6,53 @@
 <% }%>
 
 
-<h1>Formulario de creacion</h1>
-<p>crea un nuevo trago.</p>
+
+<!-- <% const existeTrago = arregloTragos%> -->
+<% if(existeTrago){%>
+<h1>Formulario de edicion</h1>
+<p>editar un trago.</p>
+<form action="/api/traguito/editar" method="post">
+
+    <label for="nombreId">Nombre</label>
+    <input id="noombreId" name="nombre" type="text" value="<%=existeTrago.nombre%>">
+    <br>
+    <label for="tipoId">tipo de trago</label>
+    <select name="tipo" id="tipoId">
+        <option value="Ron">Roncito</option>
+        <option value="Vodka">Vodkita</option>
+        <option value="Tequila">Tequilita</option>
+        <option value="Whiskey" selected>Whiskycito</option>
+        <option value="Puntas">Puntitas</option>
+        <option value="Cerveza">Chelitas</option>
+    </select>
+    <br>
+    <label for="gradosId">grados de alcohol</label>
+    <input id="gradosId" name="gradosAlcohol" type="number" min="0" max="100" step="0.1" value="<%=existeTrago.gradosAlcohol%>">
+    <br>
+    <label for="fechaCaducidadId">fecha de caducidad</label>
+    <input id="fechaCaducidadId" name="fechaCaducidad" type="date" value="<%=existeTrago.fechaCaducidad%>">
+    <br>
+    <label for="precioId">precio</label>
+    <input id="precioId" name="precio" type="number" min="0" step="0.01" value="<%=existeTrago.precio%>">
+    <br>
+    <br>
+    <input id="id" name="id" type="hidden" value="<%=existeTrago.id%>">
+    <br>
+
+
+    <!--    <button type="reset">reset</button>-->
+    <!--    <button type="submit">submit</button>-->
+    <a href="/api/traguito/lista">
+        <button type="button">cancelar</button>
+    </a>
+
+    <button>editar informacion</button>
+
+</form>
+<%}else{%>
+
+    <h1>Formulario de creacion</h1>
+    <p>crea un nuevo trago.</p>
 <form action="/api/traguito/crear" method="post">
 
     <label for="nombreId">Nombre</label>
@@ -44,5 +89,5 @@
     <button>enviar informacion</button>
 
 </form>
-
+<%}%>
 <%- include('../componentes/footer/footer')%>

@@ -27,7 +27,7 @@
             <td><%=trago.precio%></td>
             <td><%=trago.tipo%></td>
             <td>
-                <button>editar</button>
+                <a href="/api/traguito/editar/<%=trago.id%>"><button>editar</button></a>
                 <form action="/api/traguito/eliminar" method="post">
                     <input type="hidden" name="id" value="<%=trago.id%>"/>
                     <button>eliminar</button>
