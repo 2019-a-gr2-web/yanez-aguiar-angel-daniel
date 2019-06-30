@@ -47,6 +47,15 @@ export class TragosService {
         return this._tragosRepository.save(objetoEntidad);
 
     }
+
+    editar(idParaEditar):Promise<Trago>{
+        return this._tragosRepository.findOne(idParaEditar)
+
+    }
+    editarTrago(editarTrago:Trago):Promise<Trago>{
+        return this._tragosRepository.save(editarTrago)
+
+    }
     buscarPorId(id: number):Trago{
         return this.bddTragos.find(
             (trago)=>{
@@ -61,14 +70,16 @@ export class TragosService {
             }
         );
     }
-    eliminarPorId(id:number):Trago[]{
-        const indice = this.bddTragos.findIndex(
-            (trago)=>{
-                return trago.id === id
-            }
-        );
-        this.bddTragos.splice(indice,1);
-        return this.bddTragos;
+    async eliminarPorId(id: number):Promise<Trago>{
+        let objetoEntidad =await this._tragosRepository.findOne(id);
+        return this._tragosRepository.remove(objetoEntidad);
+        // const indice = this.bddTragos.findIndex(
+        //     (trago)=>{
+        //         return trago.id === id
+        //     }
+        // );
+        // this.bddTragos.splice(indice,1);
+        // return this.bddTragos;
     }
     actualizar(tragoActualizado:Trago, id:number):Trago[]{
         const indice = this.bddTragos.findIndex(
