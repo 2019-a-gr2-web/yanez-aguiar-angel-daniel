@@ -13,7 +13,11 @@
     "target": "es6",
     "sourceMap": true,
     "outDir": "./dist",
-    "baseUrl": "./"
+    "baseUrl": "./",
+    "lib": [
+      "es6",
+      "webworker"
+    ]
   },
   "exclude": ["node_modules"]
 }

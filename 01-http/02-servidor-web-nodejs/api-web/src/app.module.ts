@@ -8,9 +8,10 @@ import {DistribuidorEntity} from "./distribuidor/distribuidor.entity";
 import {FiestaEntity} from "./fiesta/fiesta.entity";
 import {DistribuidorModule} from "./distribuidor/distribuidor.module";
 import {FiestaModule} from "./fiesta/fiesta.module";
+import {ChatModule} from "./chat/chat.module";
 
 @Module({
-  imports: [TragosModules,DistribuidorModule,FiestaModule,TypeOrmModule.forRoot({
+  imports: [/*TragosModules,DistribuidorModule,FiestaModule,TypeOrmModule.forRoot({
     type: 'mysql',
     host: 'localhost',
     port: 3306,
@@ -20,7 +21,7 @@ import {FiestaModule} from "./fiesta/fiesta.module";
     entities: [TragosEntity,DistribuidorEntity,FiestaEntity],
     synchronize: true,
       dropSchema: false
-  }),],
+  }),*/ChatModule],
   controllers: [AppController],
   providers: [AppService],
 })
