@@ -1,0 +1,49 @@
+<!--archivo.ejs-->
+
+<img id="imagen-muestra" src="/api/descargarArchivo/<%=idTrago%>" width="300px" height="300px" alt="">
+<a href="/api/descargarArchivo/<%=idTrago%>" target="_blank">descargar archivo</a>
+
+<form action="/api/subirArchivo/<%=idTrago%>" method="post" enctype="multipart/form-data">
+
+    <label id="texto-archivo" for="archivo" class="boton boton-sin-seleccion">Seleccionar Archivo</label>
+    <input id="archivo" type="file" name="imagen" accept=".pptx, .jpg" multiple hidden onchange="validarArchivos()">
+
+    <button>subir archivo</button>
+</form>
+<script>
+    function validarArchivos() {
+        const archivos = document.getElementById('archivo');
+        console.log(archivos.files);
+        const label = document.getElementById('texto-archivo');
+        if (archivos.files.length>0){
+            label.className = 'boton boton-seleccionado';
+            label.innerText = 'archivos seleccionados';
+            const file = archivos.files[0];
+            const reader = new FileReader();
+            reader.onload = (eventoLecturaArchivo)=>{
+                const url = eventoLecturaArchivo.target.result;
+                console.log(url);
+                const imagenMuestra = document.getElementById('imagen-muestra');
+                imagenMuestra.src = url;
+            };
+            reader.readAsDataURL(file);
+        }else{
+            label.className = 'boton boton-sin-seleccion';
+            label.innerText = 'seleccionar archivo';
+        }
+    }
+</script>
+
+<style>
+    .boton{
+        border: solid black 2px;
+    }
+    .boton-seleccionado{
+        color: black;
+        background-color: lightgreen;
+    }
+    .boton-sin-seleccion{
+        color: white;
+        background-color: black;
+    }
+</style>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>wbsockets</title>
+</head>
+<body>
+
+<!--<script src="socket.io.js"></script>-->
+<h1 id="titulo">chat EPN</h1>
+<p class="par">primero</p>
+<p class="par" onmouseenter="clickParrafo()">segundo</p>
+
+<div id="contenedor-chat">
+    <label for="chat-texto">texto</label>
+    <input id="chat-texto" type="text">
+
+    <button onclick="clickBoton()">anadir chat</button>
+
+</div>
+
+
+<script>
+    const titulo = document.getElementById("titulo");
+    titulo.style.backgroundColor = 'green';
+    titulo.onclick = ()=>{
+        titulo.style.backgroundColor = 'red';
+        console.log('diste clic al titulo ;(');
+    };
+
+    function clickParrafo() {
+        alert('Cuidado!!!');
+    }
+    function clickBoton() {
+        const nombre = document.getElementById("chat-texto");
+        console.log(nombre.value);
+
+        const idContenedor = 'contenedor-chat';
+        const nombreEtiquetaHTMLChat= "p";
+        const parrafo = document.createElement(nombreEtiquetaHTMLChat);
+        const conenidoHTML = `
+        <div class="alert alert-primary text-right" role="alert">
+        ${nombre.value}
+        </div>
+        `;
+        parrafo.innerHTML=conenidoHTML;
+        anadirEtiqueta(idContenedor,parrafo);
+        peticionHolaMundo(nombre.value);
+    }
+
+    function anadirEtiqueta(idEtiqueta,elementoHTML) {
+        const etiqueta = document.getElementById(idEtiqueta);
+        etiqueta.appendChild(elementoHTML);
+    }
+</script>
+
+<script src="/websockets/socket.io.js"></script>
+<script>
+    const url = 'http://localhost:3001/websockets';
+    const socket = io(url);
+    console.log('ya mismito nos conectamos :D');
+    socket.on(
+        'connect', //nombre del evento
+        ()=>{
+            console.log('estamos conectados!!');
+            // socket.disconnect();
+            // setTimeout(
+            //     ()=>{
+            //         socket.connect();
+            //     },3000
+            // )
+        }
+    );
+    socket.on(
+        'disconnect',
+        ()=>{
+            console.log('=( nos desconectamos.');
+        }
+    );
+    socket.on(
+        'saludaron',
+        (data)=>{
+            console.log('nos saludaron.',data.nombre);
+            const nombreContenedor = 'contenedor-chat';
+            const idContenedor = document.getElementById(nombreContenedor);
+            const nombreEtiqueta= "p";
+            const parrafo = document.createElement(nombreEtiqueta);
+            const HTMLParrafo = `
+            <div class="alert alert-secondary" role="alert">
+                ${data.nombre}
+            </div>
+            `;
+            parrafo.innerHTML=HTMLParrafo;
+            anadirEtiqueta(idContenedor,parrafo);
+        }
+    );
+
+
+    function peticionHolaMundo(texto) {
+        const nombreMetodo = 'holaMundo';
+        const datos ={
+            nombre:texto
+        };
+        socket.emit(
+            nombreMetodo,
+            datos,
+            (respuesta)=>{
+                console.log(respuesta);
+            }
+        );
+    }
+
+</script>
+</body>
+</html>

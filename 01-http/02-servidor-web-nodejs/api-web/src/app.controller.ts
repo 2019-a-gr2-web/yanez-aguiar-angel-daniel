@@ -11,11 +11,12 @@ import {
     Body,
     Request,
     Response,
-    Session, Res
+    Session, Res, Render, UseInterceptors, UploadedFile
 } from '@nestjs/common';
 import {AppService} from './app.service';
 import {response} from "express";
 import * as Joi from '@hapi/joi';
+import {FileInterceptor} from "@nestjs/platform-express";
 
 
 @Controller('/api')
@@ -27,6 +28,39 @@ export class AppController {
 
     constructor(private readonly appService: AppService) {
     }
+
+    @Get('subirArchivo/:idTrago')
+    @Render('archivo')
+    subirArchivo(
+        @Param('idTrago') idTrago
+    ){
+    return{
+        idTrago: idTrago
+    };
+    }
+
+    @Post('subirArchivo/:idTrago')
+    @UseInterceptors(
+        FileInterceptor(
+            'imagen',
+            {
+                dest: __dirname + '/../archivos'
+            }
+        )
+    )
+    subirArchivoPost(@Param('idTrago') idTrago, @UploadedFile() archivo){
+        console.log(archivo);
+        return {mensaje:'ok'};
+    }
+
+    @Get('descargarArchivo/:idTrago')
+    descargarArchivo(@Res() res, @Param('idTrago') idTrago){
+        const originalname = '688078.jpg';
+        const path = 'C:\\Users\\Angel\\Documents\\GitHub\\yanez-aguiar-angel-daniel\\01-http\\02-servidor-web-nodejs\\api-web\\archivos\\4ee4577b099b3ea698ea076ce4bd9532';
+        res.download(path,originalname);
+    }
+
+
 
     @Get('session')
     session(
