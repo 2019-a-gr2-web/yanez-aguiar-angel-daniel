@@ -19,7 +19,7 @@ async function bootstrap() {
   app.setViewEngine('ejs');
   app.setBaseViewsDir(join(__dirname, '..', 'views'));
   app.use(express.static('publico'));
-  app.use(favicon(path.join(__dirname,'..', 'publico','imagenes', 'logo-batman.ico')))
+  app.use(favicon(path.join(__dirname,'..', 'publico','imagenes', 'logo-batman.ico')));
     app.use(
         session({
             name: 'server-session-id',

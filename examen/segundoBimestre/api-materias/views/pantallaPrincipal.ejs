@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Examen</title>
+    <style>
+        .col-sm-12{
+            text-align: center;
+        }
+        #salir{
+            text-align: right;
+        }
+        .separador{
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12" id="salir">
+            <a href="/examen/logout"><button class="btn btn-warning">Salir</button></a>
+        </div>
+    </div>
+    <div class="separador"></div>
+    <div class="row">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6">
+            <div class="row">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-8">
+                    <a href="/examen/estudiante">
+                        <button class="btn btn-primary btn-block">gestionar estudiantes</button>
+                    </a>
+                </div>
+                <div class="col-sm-2"></div>
+            </div>
+        </div>
+        <div class="col-sm-3"></div>
+    </div>
+</div>
+</body>
+</html>
