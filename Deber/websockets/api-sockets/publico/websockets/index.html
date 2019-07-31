@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Websockets</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        table,tr,td,th{
+            border: solid black 1px
+        }
+    </style>
+</head>
+<body>
+
+<h1 id="titulo">encuentra el color</h1>
+<h1 id="busquedaColor">azul</h1>
+
+<table width="400px"
+       height="400px">
+    <tr>
+        <td ><img src="/imagenes/carta.png"
+                  name="amarillo"
+                  width="200px"
+                  height="200px" id="1" onclick="imagen(this.id, this.name)"   >
+        </td>
+        <td><img src="/imagenes/carta.png"
+                 name="azul"
+                 width="200px"
+                 height="200px" id="2" onclick="imagen(this.id, this.name)"></td>
+        <td><img src="/imagenes/carta.png"
+                 name="cafe"
+                 width="200px"
+                 height="200px" id="3" onclick="imagen(this.id, this.name)"></td>
+        <td><img src="/imagenes/carta.png"
+                 name="rojo"
+                 width="200px"
+                 height="200px" id="4" onclick="imagen(this.id, this.name)"></td>
+    </tr>
+    <tr>
+        <td><img src="/imagenes/carta.png"
+                 name="verde"
+                 width="200px"
+                 height="200px" id="5" onclick="imagen(this.id, this.name)"></td>
+        <td><img src="/imagenes/carta.png"
+                 name="rosado"
+                 width="200px"
+                 height="200px" id="6" onclick="imagen(this.id, this.name)"></td>
+        <td><img src="/imagenes/carta.png"
+                 name="blanco"
+                 width="200px"
+                 height="200px" id="7" onclick="imagen(this.id, this.name)"></td>
+        <th><img src="/imagenes/carta.png"
+                 name="negro"
+                 width="200px"
+                 height="200px" id="8" onclick="imagen(this.id, this.name)" ></th>
+    </tr>
+</table>
+
+<script>
+    const titulo = document.getElementById('titulo');
+    const colorABuscar = document.getElementById('busquedaColor');
+    titulo.style.backgroundColor = 'gray';
+
+    function imagen(id, name) {
+        const imagen = document.getElementById(id);
+        const nameImagen = name;
+        if (nameImagen === 'amarillo') {
+            imagen.src = "/imagenes/amarillo.png";
+            imagen.alt = "amarillo";
+            imagen.width = "200";
+            imagen.height = "200";
+        }
+        if (nameImagen === 'azul') {
+            imagen.src = "/imagenes/azul.png";
+            imagen.alt = "azul";
+            imagen.width = "200";
+            imagen.height = "200";
+        }
+        if (nameImagen === 'blanco') {
+            imagen.src = "/imagenes/blanco.png";
+            imagen.alt = "azul";
+            imagen.width = "200";
+            imagen.height = "200";
+        }
+        if (nameImagen === 'cafe') {
+            imagen.src = "/imagenes/cafe.png";
+            imagen.alt = "cafe";
+            imagen.width = "200";
+            imagen.height = "200"
+        }
+        if (nameImagen === 'negro') {
+            imagen.src = "/imagenes/negro.png";
+            imagen.alt = "negro";
+            imagen.width = "200";
+            imagen.height = "200";
+        }
+        if (nameImagen === 'rojo') {
+            imagen.src = "/imagenes/rojo.png";
+            imagen.alt = "rojo";
+            imagen.width = "200";
+            imagen.height = "200";
+        }
+        if (nameImagen === 'rosado') {
+            imagen.src = "/imagenes/rosado.png";
+            imagen.alt = "rosado";
+            imagen.width = "200";
+            imagen.height = "200";
+        }
+        if (nameImagen === 'verde') {
+            imagen.src = "/imagenes/verde.png";
+            imagen.alt = "verde";
+            imagen.width = "200";
+            imagen.height = "200";
+        }
+        peticionHolaMundo(id, name);
+        name='';
+        colorGanador(nameImagen,colorABuscar.innerText);
+
+    }
+    function colorGanador(nameImage, nameParam) {
+        if(nameImage===nameParam){
+            alert('felicidades!!!');
+        }
+    }
+    /*function chattxt (){
+        const valor = document.getElementById('chat-texto');
+        const texto = valor.value;
+        console.log(texto);
+        const idContenedor = 'contenedor-chat';
+        const nombreEtiquetaHTMLChat = "p";
+        const parrafo = document.createElement(nombreEtiquetaHTMLChat);
+        const contenidoHTML =`
+            <div class="alert alert-primary text-right" role="alert">
+           ${texto}
+            </div>
+            `;
+        parrafo.innerHTML = contenidoHTML;
+        anadirEtiqueta(idContenedor,parrafo);
+        // peticionHolaMundo(texto);
+    };*/
+    /*function anadirEtiqueta(idEtiqueta, elementoHTML) {
+        const etiqueta = document.getElementById(idEtiqueta);
+        etiqueta.appendChild(elementoHTML);
+    }*/
+</script>
+
+<!--<script src="socket.io.js"></script>-->
+<script src="/websockets/socket.io.js"></script>
+<script>
+    const url = 'http://localhost:3001/websockets';
+    const socket = io(url);
+    console.log('Ya mismito nos conetamos :D');
+    socket.on(
+        'connect', //nombre del evento
+        ()=>{
+            console.log('Estamos conectados');
+        }
+    );
+    socket.on(
+        'saludaron',
+        data => imagen(data.id, data.name)
+    );
+    function peticionHolaMundo(id,name) {
+        const nombreMetodo = 'holaMundo';
+        const datos = {
+            id: id,
+            name: name
+        };
+        socket.emit(
+            nombreMetodo,
+            datos,
+            (respuesta)=>{
+                console.log(respuesta);
+            }
+        );
+    }
+</script>
+
+</body>
+</html>

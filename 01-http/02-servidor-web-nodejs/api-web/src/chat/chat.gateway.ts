@@ -1,20 +1,15 @@
-import {SubscribeMessage, WebSocketGateway, WebSocketServer} from "@nestjs/websockets";
-import {Client} from "socket.io";
+import {SubscribeMessage, WebSocketGateway, WebSocketServer, WsResponse} from "@nestjs/websockets";
+import {Client,Server} from "socket.io";
 //ws://localhost:3001/websockets
-@WebSocketGateway(3001,{
-    namespace:'/websockets'
-})
+@WebSocketGateway(3001,{namespace:'/websockets'})
 export class ChatGateway {
-    @WebSocketServer() server;
-    constructor(){
+    @WebSocketServer() server:Server;
+    /*constructor(){
         console.log(this.server);
-    }
+    }*/
     @SubscribeMessage('holaMundo')
     holaMundo(client:Client | any, data: any){
-        console.log(data);
-        console.log('Nos hacen la peticion');
-        console.log(this.server);
-        client.broadcast.emit('saludaron',data);
-        return 'Hola '+ data.nombre;
+        const event = 'saludaron';
+        return { event, data };
     }
 }
